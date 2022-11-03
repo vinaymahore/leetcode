@@ -1,0 +1,19 @@
+//https://leetcode.com/problems/trapping-rain-water/
+
+class Solution {
+    public int trap(int[] height) {
+        int sum = 0, i = 0, j = height.length - 1, minheight = 0, maxheight = 0;
+        while(i <= j) {
+            minheight = Math.min(height[i],height[j]);
+            maxheight = Math.max(minheight,maxheight);
+            sum += maxheight - minheight;
+            if(height[i] < height[j]) {
+                i++;
+            }
+            else {
+                j--;
+            }
+        }
+        return sum;
+    }
+}
